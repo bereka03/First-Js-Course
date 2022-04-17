@@ -12,8 +12,44 @@
 
 ////// =>> კოდი დაწერეთ აქ
 
-
-
+let nums = [];
+let sum = 0;
+let product = 1;
+let res;
+while (nums.length != 5){
+    let num = Number(prompt("შეიყვანეთ რიცხვი"));
+    if (isNaN(num)){
+        continue;
+    }else {
+        nums.push(num);
+    }
+}
+let operator;
+while (true){
+    operator = prompt("შეიყვანეთ ოპერატორი");
+    if (operator === "-" || operator === "+" || operator === "*"){
+        break;
+    }
+}
+if(operator === "+"){
+    for(let i=0; i < nums.length; i++){
+    sum += nums[i];
+    }
+    console.log(sum);
+}
+else if(operator === "*"){
+    for(let i=0; i < nums.length; i++){
+    product *= nums[i];
+    }
+    console.log(product);
+}
+else if(operator === "-"){
+    res = nums[0];
+    for(let i=1; i < nums.length; i++){
+        res -= nums[i];
+    }
+    console.log(res);
+}
 //////
 
 
@@ -30,8 +66,22 @@ const Arr2 = [23, 3, 123, 34, 43, 4, 41]
 
 ////// =>> კოდი დაწერეთ აქ
 
-
-
+let intersection = function(arr1, arr2) {
+    let new_arr = [];
+    let each_1;
+    let each_2;
+    for(let i = 0; i < arr1.length; i++){
+        each_1 = arr1[i];
+        for(let j = 0; j < arr2.length; j++){
+            each_2 = arr2[j];
+            if(each_1 == each_2){
+                new_arr.push(each_1);
+            }
+        }
+    }
+    return new_arr;
+}
+console.log(intersection(Arr1, Arr2));
 //////
 
 
@@ -44,9 +94,25 @@ const Arr2 = [23, 3, 123, 34, 43, 4, 41]
 
 
 ////// =>> კოდი დაწერეთ აქ
-
-
-
+// ვარიანტი 1
+// function timer(count){
+//     console.log(count);
+//     count++;
+//     if (count <= 10){
+//         setTimeout(() => timer(count), 1000);
+//     }
+// }
+let count = 1;
+// timer(count);
+// ვარიანტი 2
+function timer(count) {
+    console.log(count);
+    count++
+    if (count <=10){
+        return Promise.resolve(setTimeout(() => timer(count), 1000));
+    }
+}
+timer(count);
 //////
 
 
@@ -59,9 +125,17 @@ const Arr2 = [23, 3, 123, 34, 43, 4, 41]
 
 
 ////// =>> კოდი დაწერეთ აქ
-
-
-
+function maxNum(arr){
+    let num = arr[0];
+    for (let i = 1; i < arr.length; i++){
+        if (num < arr[i]){
+            num = arr[i];
+        }
+    }
+    return num;
+}
+arr = [200, 20, 4, 300, 31, 50, 1, 100];
+console.log(maxNum(arr));
 //////
 
 
@@ -75,7 +149,17 @@ const Arr2 = [23, 3, 123, 34, 43, 4, 41]
  */
 
 ////// =>> კოდი დაწერეთ აქ
+function get_loan(money, month){
+    if (month >= 1 && month < 6){
+        return money + month*money*10/100;
+    }
+    else if (month >= 6 && month < 12){
+        return money + month*money*14/100;
+    }
+    else {
+        return money + money*month*20/100;
+    }
+}
 
-
-
+console.log(get_loan(500, 20));
 //////
