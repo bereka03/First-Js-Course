@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Domenebi.ge | Welcome</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+           <div class="header-inner">
+               <nav class="navbar">
+                    <div class="above-nav-items">
+                        <div class="logo-wrapper">
+                            <div class="hamburger">
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                            </div>
+                            <a href="./index.html">
+                                <img src="./img/Symbols.svg" alt="logo">
+                            </a>
+                        </div>
+                        <ul>
+                            <li>
+                                <a class="nav-link" href="#"><img src="./img/bell.svg" alt="bell icon"></a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#"><img src="./img/bucket.svg" alt="bucket icon"></a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#"><img src="./img/user.svg" alt="user icon"></a>
+                            </li>
+                            <li>
+                                <select class="nav-link" name="dropdown" id="dropdown"></select>
+                            </li>
+                            <li>
+                                <a class="georgia" href="#"><img class="nav-link" src="./img/Layer 2.svg" alt="Georgian flag"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="below-nav-items">
+                        <div class="leftside">
+                            <ul>
+                                <li><a href="#">მთავარი</a></li>
+                                <li><a href="#">ტრანსფერები</a></li>
+                                <li><a href="#">ჰოსტინგი</a></li>
+                                <li><a href="#">Gmail</a></li>
+                                <li><a href="#">დომენის მარკეტი</a></li>
+                            </ul>
+                        </div>
+                        <div class="rightside">
+                            <ul>
+                                <li><a href="#">ჩვენს შესახებ</a></li>
+                                <li><a href="#">ფასები</a></li>
+                                <li><a href="#">ბლოგი</a></li>
+                                <li><a href="#">დახმარება</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+           </div>
+        </div>
+    </header>
+    <section class="intro">
+        <div class="container">
+            <div class="intro-inner">
+                <h1>გაყიდე და იყიდე დომენი მარტივად</h1>
+            </div>
+        </div>
+    </section>
+    <section class="main">
+        <div class="container">
+            <div class="main-inner">
+                <div class="sorting-buttons-wrapper">
+                    <button id="sorting-l-button">სორტირება</button>
+                    <button id="intro-sorting-button">სორტირება <img src="./img/Shape.svg" alt="dropdown"></button>
+                </div>
+                <div class="main-intro">
+                    <p class="main-p">დომენები მარკეტზე:</p>
+                    <div class="list-wrapper">
+                        <p class="sort-title">სორტირება:</p>
+                    <ul>
+                        <li class="current">დამატების თარიღით<img src="./img/sort.svg" alt="sort-icon"></li>
+                        <li>ვადის ამოწურვით</li>
+                        <li>ფასით</li>
+                        <li>ანბანით</li>
+                    </ul>
+                    </div>
+                    <a href="#">როგორ გავყიდო დომენი?</a>
+                </div>
+            </div>
+            <div class="content-wrapper">
+                <div class="sorting-wrapper">
+                    <input class="search" type="text" placeholder="სახელით ძიება">
+                    <label>ფასი</label>
+                    <div class="price-filter">
+                        <input type="text" value="50" name="price">
+                        <input type="text" value="50 000">
+                    </div>
+                    <div class="slider-wrapper">
+                        <div class="slider-track"></div>
+                        <input type="range" min="50" max="50000" value="50" id="slider1">
+                        <input type="range" min="50" max="50000" value="50000" id="slider2">
+                    </div>
+                    <label for="symbols">სიმბოლოების რაოდენობა</label>
+                    <div class="symbols-filter">
+                        <input type="text" value="0" name="symbols">
+                        <input type="text" value="26">
+                    </div>
+                    <div class="slider-wrapper">
+                        <div class="slider-track"></div>
+                        <input type="range" min="0" max="26" value="0" id="slider3">
+                        <input type="range" min="0" max="26" value="26" id="slider4">
+                    </div>
+                    <div class="categories">
+                        <label>კატეგორიები</label>
+                        <ul class="categories-items">
+                            <li>
+                                <input type="checkbox" value="ბიზნესი" name="ბიზნესი" id="business">
+                                <label for="business">ბიზნესი</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="უძრავი ქონება" name="უძრავი ქონება" id="property">
+                                <label for="property">უძრავი ქონება</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="ავტო" name="ავტო" id="auto">
+                                <label for="auto">ავტო</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="მედიცინა" name="მედიცინა" id="medicine">
+                                <label for="medicine">მედიცინა</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="თამაშები" name="თამაშები" id="games">
+                                <label for="games">თამაშები</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="გართობა და დასვენება" name="გართობა და დასვენება" id="relaxation">
+                                <label for="relaxation">გართობა და დასვენება</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="მედია" name="მედია" id="media">
+                                <label for="media">მედია</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="განათლება" name="განათლება" id="education">
+                                <label for="education">განათლება</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="კომერცია" name="კომერცია" id="commerce">
+                                <label for="commerce">კომერცია</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" value="ფინანსები" name="ფინანსები" id="finances">
+                                <label for="finances">ფინანსები</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-side-wrapper">
+                    <div class="main-rightside">
+                        <div class="rightside-inner">
+                            <ul id="domains">
+                                
+                            </ul>
+    
+                        </div>
+                    </div>
+                    <div class="bottom">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="./js/main.js"></script>
+</body>
+</html>
