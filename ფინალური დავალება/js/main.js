@@ -61,6 +61,7 @@ let currency_gel;
 let bucket;
 let span;
 let span_text = document.createTextNode("დამატება");
+
 for (let each of domainList){
     // leftside
     div1 = document.createElement('div');
@@ -110,6 +111,7 @@ for (let each of domainList){
     document.querySelector(`#${each.domainName} .rightside-wrapper .span-text`).append(bucket);
 }
 let count = 2;
+let buttonList = document.querySelectorAll(".span-text");
 for(let each of document.querySelectorAll(".domain-item")){
     each.addEventListener('click', function() {
         if(count % 2 === 0){
@@ -118,15 +120,16 @@ for(let each of document.querySelectorAll(".domain-item")){
             each.style.backgroundColor = "#F5F5F8",
             each.style.borderRadius = "15px",
             each.lastChild.lastChild.lastChild.style.backgroundColor = "#99CC66",
-            console.log(each.lastChild.lastChild.lastChild),
             each.firstChild.lastChild.lastChild.appendChild(span_text),
-            each.firstChild.lastChild.lastChild.style.paddingRight = '8px';
+            each.firstChild.lastChild.lastChild.style.paddingRight = '8px',
+            buttonList.forEach(n => n.classList.toggle(".selected"));
         }else {
             count++;
             return each.firstChild.firstChild.firstChild.style.border = "solid 1px transparent",
             each.style.backgroundColor = "#FFFFFF",
             each.firstChild.lastChild.lastChild.removeChild(span_text),
-            each.firstChild.lastChild.lastChild.style.paddingRight = '0px';
+            each.firstChild.lastChild.lastChild.style.paddingRight = '0px',
+            buttonList.forEach(n => n.classList.remove(".selected"));
         }
     })
 }
@@ -192,3 +195,16 @@ btn1.addEventListener('click', () => {
 btn2.addEventListener('click', () => {
     static_filter.classList.toggle("active");
 })
+
+// კალათაში დამატება
+// let check = "<img src='./img/check.svg' alt='check icon'>"
+// let buy = function(){
+//     buttonList.forEach( n => n.addEventListener('click', () => {
+//         if(n.className === 'span-text .selected'){
+//         //  n.innerHTML = check;
+//          n.innerHTML = "კალათაშია"; 
+//          n.removeEventListener("click");  
+//         }
+//     }))
+// }
+// buy();
