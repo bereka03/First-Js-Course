@@ -110,11 +110,12 @@ for (let each of domainList){
     bucket.style.backgroundColor = "#99CC66"
     document.querySelector(`#${each.domainName} .rightside-wrapper .span-text`).append(bucket);
 }
-let count = 2;
+let count = 1;
 let buttonList = document.querySelectorAll(".span-text");
+// ლისტებზე ქლიქის დადება
 for(let each of document.querySelectorAll(".domain-item")){
-    each.addEventListener('click', function() {
-        if(count % 2 === 0){
+    each.addEventListener('click', function myFunc() {
+        if(count === 1){
             count++;
             return each.firstChild.firstChild.firstChild.style.border = "solid 1px #99CC66",
             each.style.backgroundColor = "#F5F5F8",
@@ -122,9 +123,13 @@ for(let each of document.querySelectorAll(".domain-item")){
             each.lastChild.lastChild.lastChild.style.backgroundColor = "#99CC66",
             each.firstChild.lastChild.lastChild.appendChild(span_text),
             each.firstChild.lastChild.lastChild.style.paddingRight = '8px',
-            buttonList.forEach(n => n.classList.toggle(".selected"));
-        }else {
-            count++;
+            each.firstChild.lastChild.lastChild.classList.toggle(".selected");
+        }else if(each.firstChild.lastChild.lastChild.className === 'span-text .selected sold'){
+            each.removeEventListener('click', myFunc);
+            count = 1;
+        }
+        else if(2){
+            count--;
             return each.firstChild.firstChild.firstChild.style.border = "solid 1px transparent",
             each.style.backgroundColor = "#FFFFFF",
             each.firstChild.lastChild.lastChild.removeChild(span_text),
@@ -134,6 +139,7 @@ for(let each of document.querySelectorAll(".domain-item")){
     })
 }
 
+// ბურგერ მენიუ
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".below-nav-items");
 
@@ -146,7 +152,7 @@ document.querySelectorAll(".nav-link").forEach(n => n.
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
     }))
-
+// ფილტრი
 let price_input = document.querySelectorAll(".price-filter input");
 let slider1 = document.getElementById("slider1");
 let slider2 = document.getElementById("slider2");
@@ -178,12 +184,32 @@ symbol_input[0].onchange = () => {
 symbol_input[1].onchange = () => {
     slider4.value = symbol_input[1].value;
 }
+// ფილტრის ლოგიკა დასამთავრებელი
+let checkbox_arr = document.querySelectorAll(".categories-items li input");
+let filterDomains = function(){
+    for (each of checkbox_arr){
+        if (each.className === "checkbox"){
+           add_class();
+        }else if (each.className === 'checkbox checked'){
+        }
+    }
+}
+function add_class() {
+    checkbox_arr.forEach(n => {
+        n.onclick = () => {
+            n.classList.toggle("checked");
+        }
+    } )
+}
+filterDomains();
 
+// დომენების რაოდენობა საიტზე
 domain_count = document.querySelector(".main-p");
 domain_span = document.createElement("span");
 domain_span.innerHTML = `${domainList.length}`;
 domain_count.append(domain_span);
 
+// ფილტრის ღილაკზე ქლიქის დადება რესფონსივზე
 let filter = document.querySelector(".sorting-wrapper");
 let static_filter = document.querySelector(".main-intro")
 let btn1 = document.getElementById("sorting-l-button");
@@ -197,14 +223,22 @@ btn2.addEventListener('click', () => {
 })
 
 // კალათაში დამატება
-// let check = "<img src='./img/check.svg' alt='check icon'>"
-// let buy = function(){
-//     buttonList.forEach( n => n.addEventListener('click', () => {
-//         if(n.className === 'span-text .selected'){
-//         //  n.innerHTML = check;
-//          n.innerHTML = "კალათაშია"; 
-//          n.removeEventListener("click");  
-//         }
-//     }))
-// }
-// buy();
+let text2 = document.createTextNode("კალათაშია");
+let sold_count = document.getElementById("count");
+let count2 = 0;
+let buy = function(){
+    buttonList.forEach( n => n.addEventListener('click', () => {
+        if(n.className === 'span-text .selected'){
+         n.style.zIndex = "999";   
+         n.innerHTML = "<img src='./img/check.svg' alt='check icon'>"
+         n.style.backgroundColor = "#F5F5F8";
+         n.appendChild(text2);
+         n.style.color = "#696974";
+         n.classList.toggle("sold");
+         count2++;
+         sold_count.innerHTML = count2;
+        count = 2;
+        }
+    }))
+}
+buy();
