@@ -82,6 +82,10 @@ for (let each of domainList){
     div1.setAttribute("class", "domain-wrapper");
     document.querySelector(`#${each.domainName} .list-items-wrapper`).append(div1);
     domain.innerHTML = `${each.domainName}${each.domainExtension}`;
+    // domain.setAttribute('class', `${each.categories[0]}`);
+    domain.classList.toggle(`${each.categories[1]}`);
+
+
     document.querySelector(`#${each.domainName} .domain-wrapper`).append(icon);
     document.querySelector(`#${each.domainName} .domain-wrapper`).append(domain);
     // rightside
@@ -110,6 +114,7 @@ for (let each of domainList){
     bucket.style.backgroundColor = "#99CC66"
     document.querySelector(`#${each.domainName} .rightside-wrapper .span-text`).append(bucket);
 }
+
 let count = 1;
 let buttonList = document.querySelectorAll(".span-text");
 // ლისტებზე ქლიქის დადება
@@ -185,24 +190,79 @@ symbol_input[1].onchange = () => {
     slider4.value = symbol_input[1].value;
 }
 // ფილტრის ლოგიკა დასამთავრებელი
+let domains_list = document.querySelectorAll(".domain-item");
 let checkbox_arr = document.querySelectorAll(".categories-items li input");
-let filterDomains = function(){
-    for (each of checkbox_arr){
-        if (each.className === "checkbox"){
-           add_class();
-        }else if (each.className === 'checkbox checked'){
+let domains_place = document.querySelector('.filtered-domains-wrapper');
+
+function setID() {
+    for (let each of checkbox_arr){
+        for (let n of categories){
+            if (each.value === n.name){
+                each.setAttribute('id', `${n.id}`);
+            }
         }
     }
 }
-function add_class() {
-    checkbox_arr.forEach(n => {
-        n.onclick = () => {
-            n.classList.toggle("checked");
-        }
-    } )
+setID();
+function appearDomains(){
+    let list;
+    let div1;
+    let div2;
+    let div3;
+    let div4;
+    let icon;
+    let domain;
+    for (let each of domainList){
+        list = document.createElement('li');
+        list.setAttribute("class", "filtered-list-item");
+        list.style.paddingLeft = "20px";
+        list.style.cursor = "pointer";
+        list.style.borderBottom = "solid 3px #F1F1F5";
+        list.setAttribute('id', `filtered-${each.domainName}`);
+        list.setAttribute('category1', `${each.categories[0]}`);
+        list.setAttribute('category2', `${each.categories[1]}`);
+        document.getElementById('filtered-domains-list').append(list);
+        div1 = document.createElement('div');
+        div1.setAttribute('class', 'list-items-wrapper');
+        list.appendChild(div1); 
+        div2 = document.createElement('div');
+        div2.setAttribute('class', 'domain-wrapper')
+        div1.append(div2);
+        div3 = document.createElement('div');
+        div3.setAttribute('class', 'rightside-wrapper');
+        div1.append(div3);
+        icon = document.createElement("img");
+        icon.setAttribute("src", "./img/Shape.svg");
+        icon.style.border = "1px solid transparent";
+        domain = document.createElement("p");
+        domain.innerHTML = `${each.domainName}${each.domainExtension}`;
+        div2.append(icon);
+        div2.append(domain);
+        div4 = document.createElement('div');
+        div4.setAttribute('class', 'prices-wrapper');
+        div3.append(div4);
+    }
+    // document.querySelectorAll(".filtered-list-item").forEach(n => n.style.display = 'none');
 }
-filterDomains();
+appearDomains();
+let click_count = 1;
+let filtered_list = document.querySelectorAll(".filtered-list-item");
+let filterDomains = function(){
+    for (let each of checkbox_arr){
+            each.addEventListener('click', () => {
+                for (let n of filtered_list){
+                    if (each.id === n.getAttribute('category1')
+                        || each.id === n.getAttribute('category2') ){
+                            n.classList.toggle('active')
+                        
+                    }       
+                }
+           })
+        }
+    }
 
+
+filterDomains();
 // დომენების რაოდენობა საიტზე
 domain_count = document.querySelector(".main-p");
 domain_span = document.createElement("span");
@@ -228,11 +288,10 @@ let sold_count = document.getElementById("count");
 let count2 = 0;
 let buy = function(){
     buttonList.forEach( n => n.addEventListener('click', () => {
-        if(n.className === 'span-text .selected'){
-         n.style.zIndex = "999";   
+        if(n.className === 'span-text .selected'){ 
          n.innerHTML = "<img src='./img/check.svg' alt='check icon'>"
          n.style.backgroundColor = "#F5F5F8";
-         n.appendChild(text2);
+         n.appendChild(text2);    
          n.style.color = "#696974";
          n.classList.toggle("sold");
          count2++;

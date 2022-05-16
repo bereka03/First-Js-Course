@@ -340,7 +340,7 @@ input[type="checkbox"] {
 .bottom {
     margin-left: 40px;
 }
-.rightside-inner img {
+.domain-wrapper img {
     background-color: #F5F5F8;
     padding: 13px 13px;
     border-radius: 8px;
@@ -411,6 +411,32 @@ input[type="checkbox"] {
 .domains-zone li label {
     font: normal normal normal 16px/40px TKT;
 }
+#filtered-domains-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.filtered-domains-wrapper {
+    margin-top: 40px;
+    background-color: #FFFFFF;
+    border: solid 1px #F1F1F5;
+    border-radius: 15px;
+    padding-bottom: 20px;
+}
+.filtered-list-item {
+    display: none;
+}
+.filtered-list-item.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px 10px 10px 0;
+    width: 90%;
+    cursor: pointer;
+}
+
 /* *************** responsive *************** */
 @media only screen and (max-width: 1100px) {
     .container {
